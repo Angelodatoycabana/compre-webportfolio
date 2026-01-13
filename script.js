@@ -58,10 +58,12 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     createUniverseParticles();
     initScrollReveal();
+    initSmoothNavScroll();
   });
 } else {
   createUniverseParticles();
   initScrollReveal();
+  initSmoothNavScroll();
 }
 
 // Project gallery data; swap the image placeholders with real work samples
@@ -140,6 +142,37 @@ function initScrollReveal() {
   );
 
   revealItems.forEach((el) => observer.observe(el));
+}
+
+// Smooth scrolling for navbar links
+function initSmoothNavScroll() {
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const header = document.querySelector('header');
+
+  if (!navLinks.length) return;
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      const targetId = href && href.startsWith('#') ? href.slice(1) : null;
+      if (!targetId) return;
+
+      const targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
+
+      e.preventDefault();
+
+      const headerOffset = header ? header.offsetHeight + 16 : 0;
+      const rect = targetEl.getBoundingClientRect();
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const targetY = rect.top + scrollTop - headerOffset;
+
+      window.scrollTo({
+        top: targetY,
+        behavior: 'smooth',
+      });
+    });
+  });
 }
 
 document.querySelectorAll(".project-card").forEach((card) => {
