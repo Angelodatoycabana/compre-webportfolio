@@ -15,9 +15,9 @@ const projectData = {
     description:
       "Competitive jersey mockups and sponsor-ready layouts tailored for teams.",
     items: [
-      { title: "Home Jersey", src: placeholder("Home Jersey", "#0f172a") },
-      { title: "Away Jersey", src: placeholder("Away Jersey", "#1e293b") },
-      { title: "Alternate Jersey", src: placeholder("Alt Jersey", "#334155") },
+      { title: "Project 01", src: "photo/esports1.jpg" },
+      { title: "Project 02", src: "photo/esports2.jpg" },
+      { title: "Project 03", src: "photo/esports3.jpg" },
     ],
   },
   oversized: {
