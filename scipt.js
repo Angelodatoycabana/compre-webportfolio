@@ -23,3 +23,19 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     // Reset form
     this.reset();
 });
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeInUp 1s ease forwards';
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('section').forEach(section => {
+    observer.observe(section);
+});
