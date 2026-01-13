@@ -689,8 +689,8 @@ footer {
 }
 
 .resume-img {
-    max-width: 900px;
-    width: 100%;
+    max-width: 600px;
+    width: 80%;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     border: 1px solid #e5e7eb;
