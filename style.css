@@ -523,7 +523,37 @@ footer {
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
+    overflow: hidden;
     animation: welcomePulse 3s ease-in-out infinite;
+}
+
+.welcome-inner::before,
+.welcome-inner::after {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
+    border: 1px solid rgba(129, 140, 248, 0.35);
+    box-shadow: 0 0 40px rgba(129, 140, 248, 0.4);
+    pointer-events: none;
+}
+
+.welcome-inner::before {
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+    transform: rotate(8deg);
+    opacity: 0.4;
+}
+
+.welcome-inner::after {
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    border-color: rgba(56, 189, 248, 0.35);
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.35);
+    animation: welcomeOrbit 18s linear infinite;
 }
 
 @keyframes welcomePulse {
@@ -531,15 +561,37 @@ footer {
     50% { box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(102, 126, 234, 0.5); }
 }
 
+@keyframes welcomeOrbit {
+    0% { transform: rotate(0deg) translateY(0); opacity: 0.6; }
+    50% { transform: rotate(180deg) translateY(6px); opacity: 0.9; }
+    100% { transform: rotate(360deg) translateY(0); opacity: 0.6; }
+}
+
 .welcome-inner h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.7rem;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(120deg, #e0e7ff, #a855f7, #38bdf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 25px rgba(129, 140, 248, 0.6);
+    letter-spacing: 0.05em;
+    animation: titleGlow 6s ease-in-out infinite;
+}
+
+@keyframes titleGlow {
+    0%, 100% { text-shadow: 0 0 25px rgba(129, 140, 248, 0.6); }
+    50% { text-shadow: 0 0 40px rgba(129, 140, 248, 0.95); }
 }
 
 .welcome-inner p {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
+    margin-bottom: 2.25rem;
+    font-size: 1.05rem;
     color: #e5e7eb;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
 }
 
 .welcome-inner .btn {
