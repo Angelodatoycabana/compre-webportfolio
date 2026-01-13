@@ -50,3 +50,9 @@ nav a {
 nav a:hover {
     opacity: 0.8;
 }
+/* Sections */
+section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
