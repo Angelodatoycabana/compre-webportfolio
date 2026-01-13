@@ -347,6 +347,29 @@ footer {
     width: 100%;
 }
 
+/* Contact info */
+.contact-info {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.contact-info p {
+    margin-bottom: 0.75rem;
+}
+
+.contact-info a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
 /* Resume section */
 .resume-wrapper {
     display: flex;
