@@ -209,6 +209,75 @@ section {
 section:nth-child(even) {
     background: rgba(30, 41, 59, 0.4);
 }
+
+/* Scroll reveal animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    filter: blur(10px);
+    transition:
+        opacity 0.9s ease-out,
+        transform 0.9s ease-out,
+        filter 0.9s ease-out;
+}
+
+.reveal.in-view {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+.reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+    transition:
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out,
+        filter 0.8s ease-out;
+}
+
+.reveal-stagger.in-view > * {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+.reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.in-view > *:nth-child(2) { transition-delay: 0.15s; }
+.reveal-stagger.in-view > *:nth-child(3) { transition-delay: 0.25s; }
+.reveal-stagger.in-view > *:nth-child(4) { transition-delay: 0.35s; }
+.reveal-stagger.in-view > *:nth-child(5) { transition-delay: 0.45s; }
+.reveal-stagger.in-view > *:nth-child(6) { transition-delay: 0.55s; }
+
+/* Extra micro-interactions */
+.about-image img {
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.about-image img:hover {
+    transform: translateY(-6px) scale(1.04) rotate(-1.5deg);
+    box-shadow: 0 25px 60px rgba(59, 130, 246, 0.5);
+}
+
+.resume-wrapper:hover .resume-img {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 24px 50px rgba(59, 130, 246, 0.45);
+}
+
+.resume-img {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.contact-info {
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.contact-info:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.35);
+    border-color: rgba(129, 140, 248, 0.6);
+}
 #hero {
     min-height: 100vh;
     display: flex;

@@ -55,9 +55,13 @@ function createUniverseParticles() {
 
 // Initialize particles when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', createUniverseParticles);
+  document.addEventListener('DOMContentLoaded', () => {
+    createUniverseParticles();
+    initScrollReveal();
+  });
 } else {
   createUniverseParticles();
+  initScrollReveal();
 }
 
 // Project gallery data; swap the image placeholders with real work samples
@@ -113,6 +117,29 @@ if (enterBtn && welcomeSection && portfolioContent) {
     const hero = document.getElementById("hero");
     if (hero) hero.scrollIntoView({ behavior: "smooth" });
   });
+}
+
+// Scroll reveal for sections and grids
+function initScrollReveal() {
+  const revealItems = document.querySelectorAll('.reveal, .reveal-stagger');
+  if (!('IntersectionObserver' in window) || !revealItems.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px',
+    }
+  );
+
+  revealItems.forEach((el) => observer.observe(el));
 }
 
 document.querySelectorAll(".project-card").forEach((card) => {
