@@ -25,9 +25,9 @@ const projectData = {
     description:
       "Streetwear-inspired oversized tees featuring typography and graphic mashups.",
     items: [
-      { title: "Drop 01", src: placeholder("Drop 01", "#111827") },
-      { title: "Drop 02", src: placeholder("Drop 02", "#1f2937") },
-      { title: "Drop 03", src: placeholder("Drop 03", "#374151") },
+      { title: "Project 01", src: "photo/oversized1.png" },
+      { title: "Project 02", src: "photo/oversized2.png" },
+      { title: "Project 03", src: "photo/oversized3.png" },
     ],
   },
 };
