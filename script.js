@@ -1,3 +1,65 @@
+// Create dynamic particles for universe effect
+function createUniverseParticles() {
+  const container = document.querySelector('.particles-container');
+  if (!container) return;
+  
+  for (let i = 0; i < 50; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'universe-particle';
+    const size = Math.random() * 3 + 1;
+    const opacity = Math.random() * 0.8 + 0.2;
+    const duration = Math.random() * 20 + 10;
+    const delay = Math.random() * 5;
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const moveX = (Math.random() * 100 - 50);
+    const moveY = (Math.random() * 100 - 50);
+    
+    // Create unique keyframe animation for each particle
+    const animationName = `particleFloat${i}`;
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ${animationName} {
+        0% { 
+          transform: translate(0, 0) scale(1);
+          opacity: ${opacity * 0.5};
+        }
+        50% { 
+          transform: translate(${moveX}px, ${moveY}px) scale(1.5);
+          opacity: ${opacity};
+        }
+        100% { 
+          transform: translate(0, 0) scale(1);
+          opacity: ${opacity * 0.5};
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    particle.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      background: rgba(255, 255, 255, ${opacity});
+      border-radius: 50%;
+      left: ${x}%;
+      top: ${y}%;
+      animation: ${animationName} ${duration}s ease-in-out infinite;
+      animation-delay: ${delay}s;
+      box-shadow: 0 0 ${size * 2}px rgba(255, 255, 255, 0.8);
+      pointer-events: none;
+    `;
+    container.appendChild(particle);
+  }
+}
+
+// Initialize particles when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', createUniverseParticles);
+} else {
+  createUniverseParticles();
+}
+
 // Project gallery data; swap the image placeholders with real work samples
 const projectData = {
   branding: {

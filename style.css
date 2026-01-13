@@ -129,6 +129,25 @@ body {
     0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
     50% { transform: translate(20px, -30px) scale(1.2); opacity: 1; }
 }
+
+@keyframes particleFloat {
+    0% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translate(30px, -40px) scale(1.5);
+        opacity: 1;
+    }
+    100% { 
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+}
+
+.universe-particle {
+    pointer-events: none;
+}
 header {
     background: rgba(15, 23, 42, 0.85);
     backdrop-filter: blur(20px);
@@ -234,18 +253,38 @@ section:nth-child(even) {
 .btn {
     display: inline-block;
     padding: 1rem 2rem;
-    background: white;
-    color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+    color: white;
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s ease;
     animation: fadeInUp 1s ease 0.4s backwards;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 1) 0%, rgba(118, 75, 162, 1) 100%);
 }
 
 /* Section Headings */
@@ -281,6 +320,7 @@ h2::after {
 .about-text {
     flex: 1;
     min-width: 300px;
+    color: #e5e7eb;
 }
 
 .about-image {
@@ -337,18 +377,21 @@ h2::after {
 }
 
 .project-card {
-    background: white;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+    border-color: rgba(102, 126, 234, 0.5);
 }
 
 .project-card:focus {
@@ -374,9 +417,19 @@ h2::after {
     padding: 1.5rem;
 }
 
+.project-content {
+    background: rgba(15, 23, 42, 0.6);
+    color: #e5e7eb;
+}
+
 .project-content h3 {
-    color: #667eea;
+    color: #a5b4fc;
     margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(165, 180, 252, 0.3);
+}
+
+.project-content p {
+    color: #cbd5e1;
 }
 
 /* Contact Form */
@@ -437,10 +490,14 @@ h2::after {
 
 /* Footer */
 footer {
-    background: #333;
-    color: white;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #e5e7eb;
     text-align: center;
     padding: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 2rem;
 }
 
 /* Welcome screen */
@@ -451,17 +508,27 @@ footer {
     justify-content: center;
     text-align: center;
     padding: 0 1.5rem;
-    background: radial-gradient(circle at top, #a5b4fc 0, #4c1d95 40%, #020617 100%);
+    background: transparent;
     color: #f9fafb;
+    position: relative;
 }
 
 .welcome-inner {
     max-width: 640px;
-    background: rgba(15, 23, 42, 0.85);
-    border-radius: 20px;
+    background: rgba(15, 23, 42, 0.7);
+    border-radius: 25px;
     padding: 3rem 2.5rem;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(18px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(102, 126, 234, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    animation: welcomePulse 3s ease-in-out infinite;
+}
+
+@keyframes welcomePulse {
+    0%, 100% { box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(102, 126, 234, 0.3); }
+    50% { box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(102, 126, 234, 0.5); }
 }
 
 .welcome-inner h1 {
@@ -476,8 +543,9 @@ footer {
 }
 
 .welcome-inner .btn {
-    background: #f9fafb;
-    color: #4c1d95;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .portfolio-hidden {
@@ -504,15 +572,19 @@ footer {
 }
 
 .modal-content {
-    background: #fff;
-    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
     max-width: 900px;
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
     padding: 2.5rem;
     position: relative;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(102, 126, 234, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e5e7eb;
 }
 
 .modal-close {
@@ -522,9 +594,16 @@ footer {
     background: transparent;
     border: none;
     font-size: 2rem;
-    color: #667eea;
+    color: #a5b4fc;
     cursor: pointer;
     line-height: 1;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(165, 180, 252, 0.5);
+}
+
+.modal-close:hover {
+    color: #c7d2fe;
+    transform: scale(1.2) rotate(90deg);
 }
 
 .modal-gallery {
@@ -536,10 +615,18 @@ footer {
 
 .modal-gallery figure {
     margin: 0;
-    background: #f9f9fb;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.modal-gallery figure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    border-color: rgba(102, 126, 234, 0.5);
 }
 
 .modal-gallery img {
@@ -552,7 +639,8 @@ footer {
 .modal-gallery figcaption {
     padding: 0.75rem 1rem;
     font-size: 0.9rem;
-    color: #555;
+    color: #cbd5e1;
+    background: rgba(15, 23, 42, 0.6);
 }
 
 .modal-empty {
@@ -566,9 +654,13 @@ footer {
     max-width: 600px;
     margin: 2rem auto;
     padding: 1.5rem 2rem;
-    background: #f8f9fa;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e5e7eb;
 }
 
 .contact-info p {
@@ -576,12 +668,16 @@ footer {
 }
 
 .contact-info a {
-    color: #667eea;
+    color: #a5b4fc;
     text-decoration: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 10px rgba(165, 180, 252, 0.3);
 }
 
 .contact-info a:hover {
     text-decoration: underline;
+    color: #c7d2fe;
+    text-shadow: 0 0 15px rgba(165, 180, 252, 0.5);
 }
 
 /* Resume section */
