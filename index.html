@@ -73,32 +73,41 @@
         <h2>My Projects</h2>
         <div class="projects-grid">
       
-          <div class="project-card">
+          <article class="project-card" data-project="branding" role="button" tabindex="0" aria-label="Open Logo and Branding Design gallery">
             <div class="project-image">🎨</div>
             <div class="project-content">
               <h3>Logo and Branding Design</h3>
               <p>Logo, color palette, and visual branding created using Adobe Illustrator.</p>
             </div>
-          </div>
+          </article>
       
-          <div class="project-card">
+          <article class="project-card" data-project="esports" role="button" tabindex="0" aria-label="Open E-Sports Jersey Design gallery">
             <div class="project-image">📱</div>
             <div class="project-content">
               <h3>E-Sports Jersey Design</h3>
               <p>Eye‑catching posts and promotional designs made with Canva and Photoshop.</p>
             </div>
-          </div>
+          </article>
       
-          <div class="project-card">
+          <article class="project-card" data-project="oversized" role="button" tabindex="0" aria-label="Open Oversized Shirt Design gallery">
             <div class="project-image">🖼️</div>
             <div class="project-content">
               <h3>Oversized Shirt Design</h3>
               <p>High‑quality photo retouching and creative manipulation using Photoshop.</p>
             </div>
-          </div>
+          </article>
       
         </div>
       </section>
+
+      <div id="project-modal" class="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+          <button class="modal-close" aria-label="Close project details">&times;</button>
+          <h3 id="modal-title"></h3>
+          <p id="modal-description"></p>
+          <div id="modal-gallery" class="modal-gallery"></div>
+        </div>
+      </div>
       
       <footer>
         <p>&copy; 2026 Angelo Cabana. All rights reserved.</p>
