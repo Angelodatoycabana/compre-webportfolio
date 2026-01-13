@@ -5,9 +5,9 @@ const projectData = {
     description:
       "A collection of logo marks, color palettes, and brand assets crafted for clients.",
     items: [
-      { title: "Logo Concept 01", src: placeholder("Logo 01", "#667eea") },
-      { title: "Logo Concept 02", src: placeholder("Logo 02", "#764ba2") },
-      { title: "Brand Guide Preview", src: placeholder("Brand Guide", "#4a3b8f") },
+        { title: "Project 01", src: "photo/logo1.png" },
+        { title: "Project 02", src: "photo/logo2.png" },
+        { title: "Project 03", src: "photo/logo3.png" },
     ],
   },
   esports: {
