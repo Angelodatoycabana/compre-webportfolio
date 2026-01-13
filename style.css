@@ -210,6 +210,10 @@ section:nth-child(even) {
     background: rgba(30, 41, 59, 0.4);
 }
 
+#expertise {
+    color: #e5e7eb;
+}
+
 /* Scroll reveal animations */
 .reveal {
     opacity: 0;
@@ -293,6 +297,7 @@ section:nth-child(even) {
     padding: 1.25rem 1.5rem;
     border: 1px solid rgba(148, 163, 184, 0.4);
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+    color: #e5e7eb;
 }
 
 .expertise-header {
@@ -333,7 +338,9 @@ section:nth-child(even) {
     border-radius: inherit;
     background: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7);
     box-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
-    transition: width 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition: width 1.2s cubic-bezier(0.22, 0.61, 0.36, 1),
+                background-position 2.5s ease-in-out;
+    background-size: 200% 100%;
 }
 
 .progress-fill::after {
@@ -350,8 +357,20 @@ section:nth-child(even) {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+.progress-label {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    text-shadow: 0 0 8px rgba(15, 23, 42, 0.9);
+}
+
 .expertise-grid.in-view .progress-fill {
     width: var(--level);
+    background-position: 100% 0;
 }
 
 .expertise-grid.in-view .progress-fill::after {
