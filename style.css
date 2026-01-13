@@ -278,6 +278,86 @@ section:nth-child(even) {
     box-shadow: 0 15px 40px rgba(59, 130, 246, 0.35);
     border-color: rgba(129, 140, 248, 0.6);
 }
+
+/* Expertise level bars */
+.expertise-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.expertise-item {
+    background: rgba(15, 23, 42, 0.7);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.7);
+}
+
+.expertise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    color: #e5e7eb;
+}
+
+.expertise-header span:first-child {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #c7d2fe;
+}
+
+.expertise-header span:last-child {
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+.progress-track {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.45);
+}
+
+.progress-fill {
+    position: relative;
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #38bdf8, #6366f1, #a855f7);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.7);
+    transition: width 1.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: -12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, #e0f2fe 0%, rgba(59, 130, 246, 0) 70%);
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.expertise-grid.in-view .progress-fill {
+    width: var(--level);
+}
+
+.expertise-grid.in-view .progress-fill::after {
+    opacity: 1;
+    transform: translateX(0);
+}
 #hero {
     min-height: 100vh;
     display: flex;
