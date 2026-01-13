@@ -38,6 +38,21 @@ const modalDescription = document.getElementById("modal-description");
 const modalGallery = document.getElementById("modal-gallery");
 const closeBtn = document.querySelector(".modal-close");
 
+// Welcome → portfolio toggle
+const welcomeSection = document.getElementById("welcome");
+const portfolioContent = document.getElementById("portfolio-content");
+const enterBtn = document.getElementById("enter-portfolio");
+
+if (enterBtn && welcomeSection && portfolioContent) {
+  enterBtn.addEventListener("click", () => {
+    welcomeSection.style.display = "none";
+    portfolioContent.classList.remove("portfolio-hidden");
+    // Optional: scroll to hero after entering
+    const hero = document.getElementById("hero");
+    if (hero) hero.scrollIntoView({ behavior: "smooth" });
+  });
+}
+
 document.querySelectorAll(".project-card").forEach((card) => {
   const projectKey = card.getAttribute("data-project");
   card.addEventListener("click", () => openModal(projectKey));

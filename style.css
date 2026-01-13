@@ -270,6 +270,47 @@ footer {
     padding: 2rem;
 }
 
+/* Welcome screen */
+#welcome {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1.5rem;
+    background: radial-gradient(circle at top, #a5b4fc 0, #4c1d95 40%, #020617 100%);
+    color: #f9fafb;
+}
+
+.welcome-inner {
+    max-width: 640px;
+    background: rgba(15, 23, 42, 0.85);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(18px);
+}
+
+.welcome-inner h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-inner p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: #e5e7eb;
+}
+
+.welcome-inner .btn {
+    background: #f9fafb;
+    color: #4c1d95;
+}
+
+.portfolio-hidden {
+    display: none;
+}
+
 .project-modal {
     position: fixed;
     inset: 0;
