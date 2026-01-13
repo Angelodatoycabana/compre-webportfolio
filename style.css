@@ -346,6 +346,27 @@ footer {
     color: #888;
     width: 100%;
 }
+
+/* Resume section */
+.resume-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.resume-img {
+    max-width: 900px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 1px solid #e5e7eb;
+}
+
+.resume-actions .btn {
+    padding: 0.8rem 1.6rem;
+    border-radius: 999px;
+}
 @keyframes fadeInUp {
     from {
         opacity: 0;
